@@ -10,7 +10,7 @@ import { components } from "@/slices";
 
 export default function SliceSimulatorPage({
   searchParams,
-}: SliceSimulatorParams & { searchParams: { secret?: string } }) {
+}: SliceSimulatorParams & { searchParams: { secret?: string, state?: string } }) {
   if (
     process.env.SLICE_SIMULATOR_SECRET &&
     searchParams.secret !== process.env.SLICE_SIMULATOR_SECRET
@@ -18,7 +18,7 @@ export default function SliceSimulatorPage({
     redirect("/");
   }
 
-  const slices = getSlices(searchParams.state);
+  const slices = getSlices(searchParams?.state);
 
   return (
     <SliceSimulator background="" zIndex={10}>
